@@ -1,0 +1,27 @@
+int romanToInt(char* s) 
+{
+    int values[256] = {0}; //create array of 256 index and set all values to zero
+    values['I'] = 1;   //use asci value to assign numerical values 
+    values['V'] = 5;   //eg I=75 so 75th index holds 1 and so on
+    values['X'] = 10;
+    values['L'] = 50;
+    values['C'] = 100;
+    values['D'] = 500;
+    values['M'] = 1000;
+    int prev=0,total=0;
+    for(int i=strlen(s)-1;i>=0;i--)
+    {
+        int current=values[s[i]];
+        if(current<prev)
+        {
+            total-=current;
+        }
+        else
+        {
+            total=total+current;
+        }
+        prev=current;
+    }
+    return total;
+
+}
